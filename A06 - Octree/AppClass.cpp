@@ -17,7 +17,7 @@ void Application::InitVariables(void)
 #endif
 	int nSquare = static_cast<int>(std::sqrt(uInstances));
 	m_uObjects = nSquare * nSquare;
-	uint uIndex = -1;
+	uint uIndex = -1;/*
 	for (int i = 0; i < nSquare; i++)
 	{
 		for (int j = 0; j < nSquare; j++)
@@ -28,7 +28,7 @@ void Application::InitVariables(void)
 			matrix4 m4Position = glm::translate(v3Position);
 			m_pEntityMngr->SetModelMatrix(m4Position);
 		}
-	}
+	}*/
 	m_uOctantLevels = 1;
 	m_pEntityMngr->Update();
 }
@@ -36,6 +36,11 @@ void Application::Update(void)
 {
 	//Update the system so it knows how much time has passed since the last call
 	m_pSystem->Update();
+
+	m_pCameraMngr->GetCameraPlane();
+	//this gives a matrix4
+	//essentially the plane in front of the camera
+	//use that matrix4 to make 2 tris and add the texture to it
 
 	//Is the ArcBall active?
 	ArcBall();
