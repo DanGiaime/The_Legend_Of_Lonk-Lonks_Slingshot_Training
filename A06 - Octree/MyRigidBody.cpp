@@ -426,6 +426,7 @@ bool MyRigidBody::IsColliding(MyRigidBody* const a_pOther)
 	{
 		this->RemoveCollisionWith(a_pOther);
 		a_pOther->RemoveCollisionWith(this);
+		bColliding = false;
 	}
 	return bColliding;
 }

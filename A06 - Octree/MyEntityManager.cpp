@@ -174,13 +174,23 @@ void Simplex::MyEntityManager::Update(void)
 	}
 
 	//check collisions
-	/*for (uint i = 0; i < m_uEntityCount - 1; i++)
+	for (uint i = 0; i < m_uEntityCount - 1; i++)
 	{
 		for (uint j = i + 1; j < m_uEntityCount; j++)
 		{
-			m_mEntityArray[i]->IsColliding(m_mEntityArray[j]);
+			if(SharesDimension(i, m_mEntityArray[j]))//Checks FIRST if they share dimensions; no sense checking if they don't share this
+			{
+				if(m_mEntityArray[i]->IsColliding(m_mEntityArray[j]))//Checks collisions now
+				{
+					String itemA = m_mEntityArray[i]->GetUniqueID();//If they share dimensions, getting their unique ID 
+					String itemB = m_mEntityArray[j]->GetUniqueID();//will ensure that indices don't break on the program.
+					RemoveEntity(itemA);//Removes these entities
+					RemoveEntity(itemB);
+					break;//Leave the loop, end collision checking for now
+				}
+			}
 		}
-	}*/
+	}
 }
 void Simplex::MyEntityManager::AddEntity(String a_sFileName, String a_sUniqueID)
 {
