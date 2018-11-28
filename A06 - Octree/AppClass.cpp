@@ -15,6 +15,12 @@ void Application::InitVariables(void)
 #else
 	uint uInstances = 1849;
 #endif
+	crosshair = new Mesh();
+	crosshair->GeneratePlane(.05f, C_GREEN);
+
+	ground = new Mesh();
+	ground->GeneratePlane(300, C_BROWN);
+
 	int nSquare = static_cast<int>(std::sqrt(uInstances));
 	m_uObjects = nSquare * nSquare;
 	uint uIndex = -1;/*
@@ -37,11 +43,6 @@ void Application::Update(void)
 	//Update the system so it knows how much time has passed since the last call
 	m_pSystem->Update();
 
-	m_pCameraMngr->GetCameraPlane();
-	//this gives a matrix4
-	//essentially the plane in front of the camera
-	//use that matrix4 to make 2 tris and add the texture to it
-
 	//Is the ArcBall active?
 	ArcBall();
 
@@ -58,6 +59,12 @@ void Application::Display(void)
 {
 	// Clear the screen
 	ClearScreen();
+
+	matrix4 cameraPlane = m_pCameraMngr->GetCameraPlane();
+	crosshair->Render(m_pCameraMngr->GetProjectionMatrix(), m_pCameraMngr->GetViewMatrix(), cameraPlane);
+
+	matrix4 m4Position = glm::rotate(glm::translate(vector3(0, -5, 0)), glm::radians(-90.0f), AXIS_X);
+	ground->Render(m_pCameraMngr->GetProjectionMatrix(), m_pCameraMngr->GetViewMatrix(), m4Position);
 
 	//display octree
 	//m_pRoot->Display();
