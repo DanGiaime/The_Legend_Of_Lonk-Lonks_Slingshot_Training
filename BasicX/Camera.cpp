@@ -163,6 +163,8 @@ void Camera::MoveForward(float a_fDistance)
 	m_v3Target += m_v3Forward * a_fDistance;
 	m_v3Above += m_v3Forward * a_fDistance;
 
+	//m_v3Position = vector3(m_v3Position.x, 0, m_v3Position.z);
+
 	m_v3Forward = glm::normalize(m_v3Target - m_v3Position);
 	m_v3Upward = glm::normalize(m_v3Above - m_v3Position);
 	m_v3Rightward = glm::normalize(glm::cross(m_v3Forward, m_v3Upward));
