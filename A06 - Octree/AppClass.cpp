@@ -23,7 +23,55 @@ void Application::InitVariables(void)
 
 	int nSquare = static_cast<int>(std::sqrt(uInstances));
 	m_uObjects = nSquare * nSquare;
-	uint uIndex = -1;/*
+	uint uIndex = -1;
+	uIndex++;
+	m_pEntityMngr->AddEntity("Legend Of Lonk\\Green Rupee.fbx");
+	vector3 v3Position = vector3(0.0f, 0.0f, 85.0f);
+	matrix4 m4Position = glm::translate(v3Position) * glm::rotate(IDENTITY_M4, glm::radians(90.0f), vector3(1.0f, 0.0f, 0.0f)) * glm::rotate(IDENTITY_M4, glm::radians(90.0f), vector3(0.0f, 0.0f, 1.0f));
+	m_pEntityMngr->SetModelMatrix(m4Position);
+
+	uIndex++;
+	m_pEntityMngr->AddEntity("Legend Of Lonk\\Blue Rupee.fbx");
+	v3Position = vector3(8.0f, 0.0f, 80.0f);
+	m4Position = glm::translate(v3Position) * glm::rotate(IDENTITY_M4, glm::radians(90.0f), vector3(1.0f, 0.0f, 0.0f)) * glm::rotate(IDENTITY_M4, glm::radians(90.0f), vector3(0.0f, 0.0f, 1.0f));
+	m_pEntityMngr->SetModelMatrix(m4Position);
+
+	uIndex++;
+	m_pEntityMngr->AddEntity("Legend Of Lonk\\Blue Rupee.fbx");
+	v3Position = vector3(-8.0f, 0.0f, 80.0f);
+	m4Position = glm::translate(v3Position) * glm::rotate(IDENTITY_M4, glm::radians(90.0f), vector3(1.0f, 0.0f, 0.0f)) * glm::rotate(IDENTITY_M4, glm::radians(90.0f), vector3(0.0f, 0.0f, 1.0f));
+	m_pEntityMngr->SetModelMatrix(m4Position);
+
+	uIndex++;
+	m_pEntityMngr->AddEntity("Legend Of Lonk\\Blue Rupee.fbx");
+	v3Position = vector3(2.0f, 5.0f, 80.0f);
+	m4Position = glm::translate(v3Position) * glm::rotate(IDENTITY_M4, glm::radians(90.0f), vector3(1.0f, 0.0f, 0.0f)) * glm::rotate(IDENTITY_M4, glm::radians(90.0f), vector3(0.0f, 0.0f, 1.0f));
+	m_pEntityMngr->SetModelMatrix(m4Position);
+
+	uIndex++;
+	m_pEntityMngr->AddEntity("Legend Of Lonk\\Blue Rupee.fbx");
+	v3Position = vector3(-2.0f, 5.0f, 80.0f);
+	m4Position = glm::translate(v3Position) * glm::rotate(IDENTITY_M4, glm::radians(90.0f), vector3(1.0f, 0.0f, 0.0f)) * glm::rotate(IDENTITY_M4, glm::radians(90.0f), vector3(0.0f, 0.0f, 1.0f));
+	m_pEntityMngr->SetModelMatrix(m4Position);
+
+	uIndex++;
+	m_pEntityMngr->AddEntity("Legend Of Lonk\\Red Rupee.fbx");
+	v3Position = vector3(8.0f, 8.0f, 70.0f);
+	m4Position = glm::translate(v3Position) * glm::rotate(IDENTITY_M4, glm::radians(90.0f), vector3(1.0f, 0.0f, 0.0f)) * glm::rotate(IDENTITY_M4, glm::radians(90.0f), vector3(0.0f, 0.0f, 1.0f));
+	m_pEntityMngr->SetModelMatrix(m4Position);
+
+	m_pEntityMngr->AddEntity("Legend Of Lonk\\Red Rupee.fbx");
+	v3Position = vector3(-8.0f, 8.0f, 70.0f);
+	m4Position = glm::translate(v3Position) * glm::rotate(IDENTITY_M4, glm::radians(90.0f), vector3(1.0f, 0.0f, 0.0f)) * glm::rotate(IDENTITY_M4, glm::radians(90.0f), vector3(0.0f, 0.0f, 1.0f));
+	m_pEntityMngr->SetModelMatrix(m4Position);
+
+	uIndex++;
+	m_pEntityMngr->AddEntity("Legend Of Lonk\\Purple Rupee.fbx");
+	v3Position = vector3(0.0f, 16.0f, 60.0f);
+	m4Position = glm::translate(v3Position) * glm::rotate(IDENTITY_M4, glm::radians(90.0f), vector3(1.0f, 0.0f, 0.0f)) * glm::rotate(IDENTITY_M4, glm::radians(90.0f), vector3(0.0f, 0.0f, 1.0f));
+	m_pEntityMngr->SetModelMatrix(m4Position);
+
+	/*
 	for (int i = 0; i < nSquare; i++)
 	{
 		for (int j = 0; j < nSquare; j++)
