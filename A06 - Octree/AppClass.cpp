@@ -16,7 +16,7 @@ void Application::InitVariables(void)
 	uint uInstances = 1849;
 #endif
 	crosshair = new Mesh();
-	crosshair->GeneratePlane(.02f, C_GREEN);
+	crosshair->GeneratePlane(.008f, C_WHITE);
 
 	ground = new Mesh();
 	ground->GeneratePlane(300, C_BROWN);
