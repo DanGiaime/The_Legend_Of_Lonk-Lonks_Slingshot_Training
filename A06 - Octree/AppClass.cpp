@@ -16,7 +16,7 @@ void Application::InitVariables(void)
 	uint uInstances = 1849;
 #endif
 	crosshair = new Mesh();
-	crosshair->GeneratePlane(.05f, C_GREEN);
+	crosshair->GeneratePlane(.02f, C_GREEN);
 
 	ground = new Mesh();
 	ground->GeneratePlane(300, C_BROWN);
@@ -60,9 +60,12 @@ void Application::Display(void)
 	// Clear the screen
 	ClearScreen();
 
+	//render cursor on camera plane
 	matrix4 cameraPlane = m_pCameraMngr->GetCameraPlane();
+	cameraPlane = glm::scale(cameraPlane, vector3(9.0f/16.0f, 1, 1)); //divide the matrix by the aspect ratio to fix scaling on the x-axis
 	crosshair->Render(m_pCameraMngr->GetProjectionMatrix(), m_pCameraMngr->GetViewMatrix(), cameraPlane);
 
+	//render ground
 	matrix4 m4Position = glm::rotate(glm::translate(vector3(0, -5, 0)), glm::radians(-90.0f), AXIS_X);
 	ground->Render(m_pCameraMngr->GetProjectionMatrix(), m_pCameraMngr->GetViewMatrix(), m4Position);
 
