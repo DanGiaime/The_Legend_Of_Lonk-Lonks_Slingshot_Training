@@ -99,9 +99,11 @@ void Application::Update(void)
 	
 	//Update Entity Manager
 	m_pEntityMngr->Update();
+	MyDynamicEntityManager::GetInstance()->Update();
 
 	//Add objects to render list
 	m_pEntityMngr->AddEntityToRenderList(-1, true);
+	MyDynamicEntityManager::GetInstance()->AddEntityToRenderList(-1, true);
 }
 void Application::Display(void)
 {

@@ -57,6 +57,12 @@
     <ClCompile Include="MyOctant.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="MyDynamicEntityManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="MyDynamicEntity.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Main.h">
@@ -96,6 +102,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="MyOctant.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="MyDynamicEntityManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="MyDynamicEntity.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
