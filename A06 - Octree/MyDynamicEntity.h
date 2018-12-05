@@ -11,7 +11,7 @@ namespace Simplex {
 		quaternion m_qRotation;
 	public:
 		MyDynamicEntity(vector3 a_v3Velocity, vector3 a_v3Position, quaternion a_qRotation, String a_sFileName, String a_sUniqueID = "NA");
-		void Update();
+		void Update(uint i);
 		~MyDynamicEntity();
 	};
 }

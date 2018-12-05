@@ -171,6 +171,7 @@ void Simplex::MyDynamicEntityManager::Update(void)
 	for (uint i = 0; i < m_uEntityCount; i++)
 	{
 		m_mEntityArray[i]->ClearCollisionList();
+		m_mEntityArray[i]->Update(i);
 	}
 
 	//check collisions

@@ -9,14 +9,11 @@ Simplex::MyDynamicEntity::MyDynamicEntity(vector3 a_v3Velocity, vector3 a_v3Posi
 	m_qRotation = a_qRotation;
 }
 
-void Simplex::MyDynamicEntity::Update() {
+void Simplex::MyDynamicEntity::Update(uint index) {
 	matrix4 modelMatrix = this->GetModelMatrix();
-	vector3 v3Position = vector3(0.0f, 16.0f, 60.0f);
-	matrix4 m4Position = glm::translate(v3Position) * glm::rotate(IDENTITY_M4, glm::radians(90.0f), vector3(1.0f, 0.0f, 0.0f)) * glm::rotate(IDENTITY_M4, glm::radians(90.0f), vector3(0.0f, 0.0f, 1.0f));
-	MyDynamicEntityManager::GetInstance()->SetModelMatrix(m4Position);
-
-	//modelMatrix += m_v3Velocity;
-	this->SetModelMatrix(modelMatrix);
+	m_v3Position = m_v3Position + m_v3Velocity * .1f;
+	matrix4 m4Position = glm::translate(m_v3Position);
+	MyDynamicEntityManager::GetInstance()->SetModelMatrix(m4Position, index);
 }
 
 Simplex::MyDynamicEntity::~MyDynamicEntity()
