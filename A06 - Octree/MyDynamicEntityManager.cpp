@@ -180,7 +180,15 @@ void Simplex::MyDynamicEntityManager::Update(void)
 	{
 		for (uint j = 0; j < MyEntityManager::GetInstance()->GetEntityCount(); j++)
 		{
-			m_mEntityArray[i]->IsColliding(MyEntityManager::GetInstance()->GetEntity(j));
+			if (SharesDimension(i, MyEntityManager::GetInstance()->GetEntity(j)))
+			{
+				if (m_mEntityArray[i]->IsColliding(MyEntityManager::GetInstance()->GetEntity(j)))
+				{
+					RemoveEntity(i);
+					MyEntityManager::GetInstance()->RemoveEntity(j);
+					break;
+				}
+			}
 		}
 	}
 }
