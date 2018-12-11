@@ -43,19 +43,18 @@ void Application::DrawGUI(void)
 			ImGui::Text("Bullets: %d\n", MyDynamicEntityManager::GetInstance()->GetEntityCount());
 			ImGui::Separator();
 			ImGui::Text("Control:\n");
-			ImGui::Text("   WASD: Movement\n");
-			ImGui::Text("	 F1: Perspective\n");
-			ImGui::Text("	 F2: Orthographic X\n");
-			ImGui::Text("	 F3: Orthographic Y\n");
-			ImGui::Text("	 F4: Orthographic Z\n");
-			ImGui::Separator();
+			ImGui::Text("	WASD: Movement\n");
+			ImGui::Text("	Right Click: Aim\n");
+			ImGui::Text("	Spacebar: Shoot\n");
+			ImGui::Text("	G: Hold to Shoot (5 at a time)\n");
+			/*ImGui::Separator();
 			ImGui::Text(" PageUp: Increment Octant display\n");
 			ImGui::Text(" PageDw: Decrement Octant display\n");
 			ImGui::Separator();
 			ImGui::Text("	  -: Increment Octree subdivision\n");
 			ImGui::Text("	  +: Decrement Octree subdivision\n");
-			ImGui::Separator();
-			ImGui::TextColored(ImColor(255, 255, 0), "Octree\n");
+			ImGui::Separator();*/
+			ImGui::TextColored(ImColor(255, 255, 0), "Lonk's Slingshot Training\n");
 		}
 		ImGui::End();
 	}

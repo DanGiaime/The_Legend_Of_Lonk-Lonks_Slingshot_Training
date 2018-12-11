@@ -27,7 +27,7 @@ class Application
 	Mesh* crosshair = nullptr;
 	Mesh* ground = nullptr;
 private:
-	String m_sProgrammer = "Alberto Bobadilla - labigm@rit.edu"; //programmer
+	String m_sProgrammer = "Nontendo"; //programmer
 
 	static ImGuiObject gui; //GUI object
 	bool m_bGUI_Main = true; //show Main GUI window?
