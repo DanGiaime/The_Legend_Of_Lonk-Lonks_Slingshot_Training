@@ -216,6 +216,41 @@ bool Simplex::MyOctant::IsColliding(uint a_uRBIndex)
 	return true;
 }
 
+bool Simplex::MyOctant::IsOutColliding(uint a_uRBIndex)
+{
+	int objects = m_pDynamEntityMngr->GetEntityCount();//To check the index given
+	if (objects <= a_uRBIndex)
+		return false;
+
+	//Use AABB collision to check collisions
+	MyEntity* pEntity = m_pDynamEntityMngr->GetEntity(a_uRBIndex);
+	MyRigidBody* pRigidBody = pEntity->GetRigidBody();
+	//Getting the min and max to check against the octant
+	vector3 maxCheck = pRigidBody->GetMaxGlobal();
+	vector3 minCheck = pRigidBody->GetMinGlobal();
+
+	//Checking X
+	if (m_v3Max.x < minCheck.x)
+		return false;
+	if (m_v3Min.x > maxCheck.x)
+		return false;
+
+	//Checking y
+	if (m_v3Max.y < minCheck.y)
+		return false;
+	if (m_v3Min.y > maxCheck.y)
+		return false;
+
+	//Checking Z
+	if (m_v3Max.x < minCheck.x)
+		return false;
+	if (m_v3Min.x > maxCheck.x)
+		return false;
+
+	//If it got through all these checks they are colliding
+	return true;
+}
+
 //Display the octant based on index
 void Simplex::MyOctant::Display(uint a_nIndex, vector3 a_v3Color)
 {
@@ -428,6 +463,27 @@ void Simplex::MyOctant::AssignIDtoEntity(void)
 	}
 }
 
+void Simplex::MyOctant::AssignIDtoOutEntity(void)
+{
+	//Go until a leaf is reached
+	for(int i = 0; i < m_uChildren; i++)
+	{
+		m_pChild[i]->AssignIDtoOutEntity();
+	}
+
+	if(m_uChildren == 0)
+	{
+		int entityCount = m_pDynamEntityMngr->GetEntityCount();//Sets up the count for the entities
+		for (int i = 0; i < entityCount; i++)
+		{
+			if (IsOutColliding(i))
+			{
+				m_pDynamEntityMngr->AddDimension(i, m_uID);//Add this dimension to the entity
+			}
+		}
+	}
+}
+
 //Accessor - Gives count of octants currently existing
 uint Simplex::MyOctant::GetOctantCount(void)
 {
@@ -464,6 +520,7 @@ void Simplex::MyOctant::Init(void)
 	//Setting the singleton pointers
 	m_pMeshMngr = MeshManager::GetInstance();
 	m_pEntityMngr = MyEntityManager::GetInstance();
+	m_pDynamEntityMngr = MyDynamicEntityManager::GetInstance();
 
 	//Setting pointers to nullptr to start
 	m_pRoot = nullptr;

@@ -174,7 +174,7 @@ void Simplex::MyDynamicEntityManager::Update(void)
 		m_mEntityArray[i]->ClearCollisionList();
 		m_mEntityArray[i]->Update(i);
 	}
-
+	bool notCollided = true;
 	//check collisions
 	for (uint i = 0; i < m_uEntityCount ; i++)
 	{
@@ -186,10 +186,13 @@ void Simplex::MyDynamicEntityManager::Update(void)
 				{
 					RemoveEntity(i);
 					MyEntityManager::GetInstance()->RemoveEntity(j);
+					notCollided = false;
 					break;
 				}
 			}
 		}
+		if(notCollided)
+			m_mEntityArray[i]->ClearDimensionSet();
 	}
 }
 void Simplex::MyDynamicEntityManager::AddEntity(vector3 a_v3Velocity, vector3 a_v3Position, quaternion a_qRotation, String a_sFileName, String a_sUniqueID)
