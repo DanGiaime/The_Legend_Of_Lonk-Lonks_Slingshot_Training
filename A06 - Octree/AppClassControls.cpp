@@ -438,6 +438,10 @@ void Application::ProcessKeyboard(void)
 		vector3 v3Velocity = m_pCameraMngr->GetForward() * .5f;
 		quaternion qRotation = IDENTITY_QUAT;
 		MyDynamicEntityManager::GetInstance()->AddEntity(v3Velocity, v3Position, qRotation, "Legend Of Lonk\\Purple Rupee.fbx");
+		MyDynamicEntityManager::GetInstance()->AddEntity(v3Velocity, v3Position, qRotation, "Legend Of Lonk\\Purple Rupee.fbx");
+		MyDynamicEntityManager::GetInstance()->AddEntity(v3Velocity, v3Position, qRotation, "Legend Of Lonk\\Purple Rupee.fbx");
+		MyDynamicEntityManager::GetInstance()->AddEntity(v3Velocity, v3Position, qRotation, "Legend Of Lonk\\Purple Rupee.fbx");
+		MyDynamicEntityManager::GetInstance()->AddEntity(v3Velocity, v3Position, qRotation, "Legend Of Lonk\\Purple Rupee.fbx");
 	}
 
 	//if (sf::Keyboard::isKeyPressed(sf::Keyboard::Q))
