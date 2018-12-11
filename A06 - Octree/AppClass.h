@@ -65,6 +65,9 @@ private:
 	sf::Sound m_sound; //sound effect
 	sf::Music m_soundBGM; //background music
 
+	float cameraX = 0;
+	float cameraY = 0;
+	float cameraZ = 0;
 public:
 #pragma region Constructor / Run / Destructor
 	/*

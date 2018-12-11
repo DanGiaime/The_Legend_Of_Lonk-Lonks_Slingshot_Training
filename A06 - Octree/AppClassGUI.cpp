@@ -47,6 +47,11 @@ void Application::DrawGUI(void)
 			ImGui::Text("	Right Click: Aim\n");
 			ImGui::Text("	Spacebar: Shoot\n");
 			ImGui::Text("	G: Hold to Shoot (5 at a time)\n");
+			ImGui::Separator();
+			ImGui::Text("Position:\n");
+			ImGui::Text("	X: %f\n", m_pCameraMngr->GetPosition().x);
+			ImGui::Text("	Y: %f\n", m_pCameraMngr->GetPosition().y);
+			ImGui::Text("	Z: %f\n", m_pCameraMngr->GetPosition().z);
 			/*ImGui::Separator();
 			ImGui::Text(" PageUp: Increment Octant display\n");
 			ImGui::Text(" PageDw: Decrement Octant display\n");

@@ -190,6 +190,12 @@ void Simplex::MyDynamicEntityManager::Update(void)
 					break;
 				}
 			}
+			if (m_mEntityArray[i]->GetRigidBody()->GetCenterGlobal().z < 50.0f)
+			{
+				RemoveEntity(i);
+				notCollided = false;
+				break;
+			}
 		}
 		if(notCollided)
 			m_mEntityArray[i]->ClearDimensionSet();
