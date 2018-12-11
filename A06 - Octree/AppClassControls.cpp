@@ -145,15 +145,6 @@ void Application::ProcessKeyReleased(sf::Event a_event)
 		vector3 v3Velocity = m_pCameraMngr->GetForward()*3;
 		quaternion qRotation = IDENTITY_QUAT;
 		MyDynamicEntityManager::GetInstance()->AddEntity(v3Velocity, v3Position, qRotation, "Legend Of Lonk\\Purple Rupee.fbx");
-		/*MyDynamicEntityManager::GetInstance()->AddEntity(v3Velocity, v3Position, qRotation, "Legend Of Lonk\\Purple Rupee.fbx");
-		MyDynamicEntityManager::GetInstance()->AddEntity(v3Velocity, v3Position, qRotation, "Legend Of Lonk\\Purple Rupee.fbx");
-		MyDynamicEntityManager::GetInstance()->AddEntity(v3Velocity, v3Position, qRotation, "Legend Of Lonk\\Purple Rupee.fbx");
-		MyDynamicEntityManager::GetInstance()->AddEntity(v3Velocity, v3Position, qRotation, "Legend Of Lonk\\Purple Rupee.fbx");
-		MyDynamicEntityManager::GetInstance()->AddEntity(v3Velocity, v3Position, qRotation, "Legend Of Lonk\\Purple Rupee.fbx");
-		MyDynamicEntityManager::GetInstance()->AddEntity(v3Velocity, v3Position, qRotation, "Legend Of Lonk\\Purple Rupee.fbx");
-		MyDynamicEntityManager::GetInstance()->AddEntity(v3Velocity, v3Position, qRotation, "Legend Of Lonk\\Purple Rupee.fbx");
-		MyDynamicEntityManager::GetInstance()->AddEntity(v3Velocity, v3Position, qRotation, "Legend Of Lonk\\Purple Rupee.fbx");
-		MyDynamicEntityManager::GetInstance()->AddEntity(v3Velocity, v3Position, qRotation, "Legend Of Lonk\\Purple Rupee.fbx");*/
 	}
 		break;
 	case sf::Keyboard::LShift:
@@ -440,6 +431,14 @@ void Application::ProcessKeyboard(void)
 
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
 		m_pCameraMngr->MoveSideways(m_fMovementSpeed * fMultiplier);
+
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::G))
+	{
+		vector3 v3Position = m_pCameraMngr->GetPosition();
+		vector3 v3Velocity = m_pCameraMngr->GetForward() * .5f;
+		quaternion qRotation = IDENTITY_QUAT;
+		MyDynamicEntityManager::GetInstance()->AddEntity(v3Velocity, v3Position, qRotation, "Legend Of Lonk\\Purple Rupee.fbx");
+	}
 
 	//if (sf::Keyboard::isKeyPressed(sf::Keyboard::Q))
 		//m_pCameraMngr->MoveVertical(-m_fMovementSpeed * fMultiplier);
