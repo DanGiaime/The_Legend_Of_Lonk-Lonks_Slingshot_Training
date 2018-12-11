@@ -60,6 +60,7 @@ void Application::InitVariables(void)
 	m4Position = glm::translate(v3Position) * glm::rotate(IDENTITY_M4, glm::radians(90.0f), vector3(1.0f, 0.0f, 0.0f)) * glm::rotate(IDENTITY_M4, glm::radians(90.0f), vector3(0.0f, 0.0f, 1.0f));
 	m_pEntityMngr->SetModelMatrix(m4Position);
 
+	uIndex++;
 	m_pEntityMngr->AddEntity("Legend Of Lonk\\Red Rupee.fbx");
 	v3Position = vector3(-8.0f, 8.0f, 70.0f);
 	m4Position = glm::translate(v3Position) * glm::rotate(IDENTITY_M4, glm::radians(90.0f), vector3(1.0f, 0.0f, 0.0f)) * glm::rotate(IDENTITY_M4, glm::radians(90.0f), vector3(0.0f, 0.0f, 1.0f));
@@ -84,6 +85,7 @@ void Application::InitVariables(void)
 		}
 	}*/
 	m_uOctantLevels = 1;
+	m_pRoot = new MyOctant(m_uOctantLevels, 5);
 	m_pEntityMngr->Update();
 }
 void Application::Update(void)
@@ -97,6 +99,9 @@ void Application::Update(void)
 	//Is the first person camera active?
 	CameraRotation();
 	
+	//Assign IDs to the dynamic entities
+	m_pRoot->AssignIDtoOutEntity();
+
 	//Update Entity Manager
 	m_pEntityMngr->Update();
 	MyDynamicEntityManager::GetInstance()->Update();
@@ -110,6 +115,12 @@ void Application::Display(void)
 	// Clear the screen
 	ClearScreen();
 
+	//display octree
+	if (m_uOctantID == -1)
+		m_pRoot->Display();
+	else
+		m_pRoot->Display(m_uOctantID);
+
 	//render cursor on camera plane
 	matrix4 cameraPlane = m_pCameraMngr->GetCameraPlane();
 	cameraPlane = glm::scale(cameraPlane, vector3(9.0f/16.0f, 1, 1)); //divide the matrix by the aspect ratio to fix scaling on the x-axis
@@ -118,9 +129,6 @@ void Application::Display(void)
 	//render ground
 	matrix4 m4Position = glm::rotate(glm::translate(vector3(0, -5, 0)), glm::radians(-90.0f), AXIS_X);
 	ground->Render(m_pCameraMngr->GetProjectionMatrix(), m_pCameraMngr->GetViewMatrix(), m4Position);
-
-	//display octree
-	//m_pRoot->Display();
 	
 	// draw a skybox
 	m_pMeshMngr->AddSkyboxToRenderList();
@@ -139,6 +147,7 @@ void Application::Display(void)
 }
 void Application::Release(void)
 {
+	SafeDelete(m_pRoot);
 	//release GUI
 	ShutdownGUI();
 }

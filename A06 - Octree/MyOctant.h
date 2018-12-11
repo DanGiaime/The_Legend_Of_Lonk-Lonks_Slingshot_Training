@@ -6,6 +6,7 @@ Date: 2017/07
 #define __MYOCTANTCLASS_H_
 
 #include "MyEntityManager.h"
+#include "MyDynamicEntityManager.h"
 
 namespace Simplex
 {
@@ -25,6 +26,7 @@ namespace Simplex
 
 		MeshManager* m_pMeshMngr = nullptr;//Mesh Manager singleton
 		MyEntityManager* m_pEntityMngr = nullptr; //Entity Manager Singleton
+		MyDynamicEntityManager* m_pDynamEntityMngr = nullptr;
 
 		vector3 m_v3Center = vector3(0.0f); //Will store the center point of the octant
 		vector3 m_v3Min = vector3(0.0f); //Will store the minimum vector of the octant
@@ -114,6 +116,14 @@ namespace Simplex
 		*/
 		bool IsColliding(uint a_uRBIndex);
 		/*
+		USAGE: Asks if there is a collision with the DynamicEntity specified by index from
+		the Bounding Object Manager
+		ARGUMENTS:
+		- int a_uRBIndex -> Index of the Entity in the Entity Manager
+		OUTPUT: check of the collision
+		*/
+		bool IsOutColliding(uint a_uRBIndex);
+		/*
 		USAGE: Displays the Octant volume specified by index including the objects underneath
 		ARGUMENTS:
 		- uint a_nIndex -> Octant to be displayed.
@@ -191,7 +201,12 @@ namespace Simplex
 		OUTPUT: ---
 		*/
 		void AssignIDtoEntity(void);
-
+		/*
+		USAGE: Sets ID/Dimensions for objects not in the Octree
+		ARGUMENTS: ---
+		OUTPUT: ---
+		*/
+		void AssignIDtoOutEntity(void);
 		/*
 		USAGE: Gets the total number of octants in the world
 		ARGUMENTS: ---
