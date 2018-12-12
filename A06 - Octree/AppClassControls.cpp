@@ -157,8 +157,12 @@ void Application::ProcessKeyReleased(sf::Event a_event)
 	}
 		break;
 	case sf::Keyboard::LShift:
+		octantDisplay = !octantDisplay;
+		break;
 	case sf::Keyboard::RShift:
+		octantActive = !octantActive;
 		m_bModifier = false;
+		break;
 	}
 
 	//gui
