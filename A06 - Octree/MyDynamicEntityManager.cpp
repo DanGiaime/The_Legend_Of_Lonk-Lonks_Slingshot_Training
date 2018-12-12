@@ -191,7 +191,7 @@ void Simplex::MyDynamicEntityManager::Update(void)
 					break;
 				}
 			}
-			if (m_mEntityArray[i]->GetRigidBody()->GetCenterGlobal().z < 50.0f)
+			if (m_mEntityArray[i]->GetRigidBody()->GetCenterGlobal().z < 50.0f || m_mEntityArray[i]->GetRigidBody()->GetCenterGlobal().z > 150.0f || m_mEntityArray[i]->GetRigidBody()->GetCenterGlobal().x < -100 || m_mEntityArray[i]->GetRigidBody()->GetCenterGlobal().x > 100 || m_mEntityArray[i]->GetRigidBody()->GetCenterGlobal().y > 100 || m_mEntityArray[i]->GetRigidBody()->GetCenterGlobal().y < -50)
 			{
 				RemoveEntity(i);
 				notCollided = false;
