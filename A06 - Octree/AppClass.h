@@ -124,6 +124,7 @@ private:
 	OUTPUT: ---
 	*/
 	void InitVariables(void);
+	void SetTargets(uint & index, MyEntityManager * entities);
 	/*
 	USAGE: Reads the configuration of the application to a file
 	ARGUMENTS: ---

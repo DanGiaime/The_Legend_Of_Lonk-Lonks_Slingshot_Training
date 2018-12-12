@@ -144,7 +144,7 @@ void Application::ProcessKeyReleased(sf::Event a_event)
 		vector3 v3Position = m_pCameraMngr->GetPosition();
 		vector3 v3Velocity = m_pCameraMngr->GetForward()*3;
 		quaternion qRotation = IDENTITY_QUAT;
-		MyDynamicEntityManager::GetInstance()->AddEntity(v3Velocity, v3Position, qRotation, "Legend Of Lonk\\Purple Rupee.fbx");
+		MyDynamicEntityManager::GetInstance()->AddEntity(v3Velocity, v3Position, qRotation, "Legend Of Lonk\\Deku Seed.fbx");
 		/*MyDynamicEntityManager::GetInstance()->AddEntity(v3Velocity, v3Position, qRotation, "Legend Of Lonk\\Purple Rupee.fbx");
 		MyDynamicEntityManager::GetInstance()->AddEntity(v3Velocity, v3Position, qRotation, "Legend Of Lonk\\Purple Rupee.fbx");
 		MyDynamicEntityManager::GetInstance()->AddEntity(v3Velocity, v3Position, qRotation, "Legend Of Lonk\\Purple Rupee.fbx");
