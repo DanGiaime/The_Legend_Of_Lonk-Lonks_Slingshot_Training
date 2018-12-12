@@ -89,8 +89,22 @@ void Application::Update(void)
 	//Is the first person camera active?
 	CameraRotation();
 	
-	//Assign IDs to the dynamic entities
-	m_pRoot->AssignIDtoOutEntity();
+	//Assign IDs to the dynamic entities and static entities
+	if(octantActive)
+	{
+		m_pRoot->AssignIDtoOutEntity();
+		m_pRoot->AssignIDtoEntity();
+	}
+
+	//Defaults the entites to the 
+	if(!octantActive)
+	{
+		int sObjects = m_pEntityMngr->GetEntityCount();
+		int dObjects = MyDynamicEntityManager::GetInstance()->GetEntityCount();
+
+		m_pEntityMngr->ClearDimensionSetAll();
+		MyDynamicEntityManager::GetInstance()->ClearDimensionSetAll();
+	}
 
 	//Update Entity Manager
 	m_pEntityMngr->Update();
@@ -106,10 +120,16 @@ void Application::Display(void)
 	ClearScreen();
 
 	//display octree
-	if (m_uOctantID == -1)
-		m_pRoot->Display();
-	else
-		m_pRoot->Display(m_uOctantID);
+	if(octantDisplay)
+	{
+		if (m_uOctantID == -1)
+			m_pRoot->Display();
+		else
+			m_pRoot->Display(m_uOctantID);
+	}
+
+	if (!octantActive)
+		m_pRoot->Display(vector3(1.0f, 0.0f, 0.0f));
 
 	//render cursor on camera plane
 	matrix4 cameraPlane = m_pCameraMngr->GetCameraPlane();

@@ -23,6 +23,8 @@ class Application
 	uint m_uOctantID = -1; //Index of Octant to display
 	uint m_uObjects = 0; //Number of objects in the scene
 	uint m_uOctantLevels = 0; //Number of levels in the octree
+	bool octantActive = true;//Toggle bool for whether the octree is active or not
+	bool octantDisplay = true;//Toggle octant display
 
 	Mesh* crosshair = nullptr;
 	Mesh* ground = nullptr;
