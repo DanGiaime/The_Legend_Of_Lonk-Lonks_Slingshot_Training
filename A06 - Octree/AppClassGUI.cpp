@@ -52,6 +52,7 @@ void Application::DrawGUI(void)
 			ImGui::Text("	Spacebar: Shoot\n");
 			ImGui::Text("	G: Hold to Shoot (5 at a time)\n");
 			ImGui::Text("	R: Reset Level\n");
+			ImGui::Text("	E: Toggle Octree\n");
 			ImGui::Separator();
 			ImGui::Text("Position:\n");
 			ImGui::Text("	X: %f\n", m_pCameraMngr->GetPosition().x);

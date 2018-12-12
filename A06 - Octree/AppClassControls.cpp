@@ -150,10 +150,10 @@ void Application::ProcessKeyReleased(sf::Event a_event)
 	case sf::Keyboard::R:
 		Restart();
 		break;
-	case sf::Keyboard::LShift:
+	case sf::Keyboard::Q:
 		octantDisplay = !octantDisplay;
 		break;
-	case sf::Keyboard::RShift:
+	case sf::Keyboard::E:
 		octantActive = !octantActive;
 		m_bModifier = false;
 		break;
@@ -444,11 +444,11 @@ void Application::ProcessKeyboard(void)
 		vector3 v3Position = m_pCameraMngr->GetPosition();
 		vector3 v3Velocity = m_pCameraMngr->GetForward() * .5f;
 		quaternion qRotation = IDENTITY_QUAT;
-		MyDynamicEntityManager::GetInstance()->AddEntity(v3Velocity, v3Position, qRotation, "Legend Of Lonk\\Purple Rupee.fbx");
-		MyDynamicEntityManager::GetInstance()->AddEntity(v3Velocity, v3Position, qRotation, "Legend Of Lonk\\Purple Rupee.fbx");
-		MyDynamicEntityManager::GetInstance()->AddEntity(v3Velocity, v3Position, qRotation, "Legend Of Lonk\\Purple Rupee.fbx");
-		MyDynamicEntityManager::GetInstance()->AddEntity(v3Velocity, v3Position, qRotation, "Legend Of Lonk\\Purple Rupee.fbx");
-		MyDynamicEntityManager::GetInstance()->AddEntity(v3Velocity, v3Position, qRotation, "Legend Of Lonk\\Purple Rupee.fbx");
+		MyDynamicEntityManager::GetInstance()->AddEntity(v3Velocity, v3Position, qRotation, "Legend Of Lonk\\Deku Seed.fbx");
+		MyDynamicEntityManager::GetInstance()->AddEntity(v3Velocity, v3Position, qRotation, "Legend Of Lonk\\Deku Seed.fbx");
+		MyDynamicEntityManager::GetInstance()->AddEntity(v3Velocity, v3Position, qRotation, "Legend Of Lonk\\Deku Seed.fbx");
+		MyDynamicEntityManager::GetInstance()->AddEntity(v3Velocity, v3Position, qRotation, "Legend Of Lonk\\Deku Seed.fbx");
+		MyDynamicEntityManager::GetInstance()->AddEntity(v3Velocity, v3Position, qRotation, "Legend Of Lonk\\Deku Seed.fbx");
 	}
 
 	//if (sf::Keyboard::isKeyPressed(sf::Keyboard::Q))
