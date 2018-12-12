@@ -21,72 +21,62 @@ void Application::InitVariables(void)
 	ground = new Mesh();
 	ground->GeneratePlane(300, C_BROWN);
 
-	int nSquare = static_cast<int>(std::sqrt(uInstances));
-	m_uObjects = nSquare * nSquare;
 	uint uIndex = -1;
-	uIndex++;
-	m_pEntityMngr->AddEntity("Legend Of Lonk\\Green Rupee.fbx");
-	vector3 v3Position = vector3(0.0f, 0.0f, 85.0f);
-	matrix4 m4Position = glm::translate(v3Position) * glm::rotate(IDENTITY_M4, glm::radians(90.0f), vector3(1.0f, 0.0f, 0.0f)) * glm::rotate(IDENTITY_M4, glm::radians(90.0f), vector3(0.0f, 0.0f, 1.0f));
-	m_pEntityMngr->SetModelMatrix(m4Position);
+	SetTargets(uIndex, m_pEntityMngr);
 
-	uIndex++;
-	m_pEntityMngr->AddEntity("Legend Of Lonk\\Blue Rupee.fbx");
-	v3Position = vector3(8.0f, 0.0f, 80.0f);
-	m4Position = glm::translate(v3Position) * glm::rotate(IDENTITY_M4, glm::radians(90.0f), vector3(1.0f, 0.0f, 0.0f)) * glm::rotate(IDENTITY_M4, glm::radians(90.0f), vector3(0.0f, 0.0f, 1.0f));
-	m_pEntityMngr->SetModelMatrix(m4Position);
-
-	uIndex++;
-	m_pEntityMngr->AddEntity("Legend Of Lonk\\Blue Rupee.fbx");
-	v3Position = vector3(-8.0f, 0.0f, 80.0f);
-	m4Position = glm::translate(v3Position) * glm::rotate(IDENTITY_M4, glm::radians(90.0f), vector3(1.0f, 0.0f, 0.0f)) * glm::rotate(IDENTITY_M4, glm::radians(90.0f), vector3(0.0f, 0.0f, 1.0f));
-	m_pEntityMngr->SetModelMatrix(m4Position);
-
-	uIndex++;
-	m_pEntityMngr->AddEntity("Legend Of Lonk\\Blue Rupee.fbx");
-	v3Position = vector3(2.0f, 5.0f, 80.0f);
-	m4Position = glm::translate(v3Position) * glm::rotate(IDENTITY_M4, glm::radians(90.0f), vector3(1.0f, 0.0f, 0.0f)) * glm::rotate(IDENTITY_M4, glm::radians(90.0f), vector3(0.0f, 0.0f, 1.0f));
-	m_pEntityMngr->SetModelMatrix(m4Position);
-
-	uIndex++;
-	m_pEntityMngr->AddEntity("Legend Of Lonk\\Blue Rupee.fbx");
-	v3Position = vector3(-2.0f, 5.0f, 80.0f);
-	m4Position = glm::translate(v3Position) * glm::rotate(IDENTITY_M4, glm::radians(90.0f), vector3(1.0f, 0.0f, 0.0f)) * glm::rotate(IDENTITY_M4, glm::radians(90.0f), vector3(0.0f, 0.0f, 1.0f));
-	m_pEntityMngr->SetModelMatrix(m4Position);
-
-	uIndex++;
-	m_pEntityMngr->AddEntity("Legend Of Lonk\\Red Rupee.fbx");
-	v3Position = vector3(8.0f, 8.0f, 70.0f);
-	m4Position = glm::translate(v3Position) * glm::rotate(IDENTITY_M4, glm::radians(90.0f), vector3(1.0f, 0.0f, 0.0f)) * glm::rotate(IDENTITY_M4, glm::radians(90.0f), vector3(0.0f, 0.0f, 1.0f));
-	m_pEntityMngr->SetModelMatrix(m4Position);
-
-	uIndex++;
-	m_pEntityMngr->AddEntity("Legend Of Lonk\\Red Rupee.fbx");
-	v3Position = vector3(-8.0f, 8.0f, 70.0f);
-	m4Position = glm::translate(v3Position) * glm::rotate(IDENTITY_M4, glm::radians(90.0f), vector3(1.0f, 0.0f, 0.0f)) * glm::rotate(IDENTITY_M4, glm::radians(90.0f), vector3(0.0f, 0.0f, 1.0f));
-	m_pEntityMngr->SetModelMatrix(m4Position);
-
-	uIndex++;
-	m_pEntityMngr->AddEntity("Legend Of Lonk\\Purple Rupee.fbx");
-	v3Position = vector3(0.0f, 16.0f, 60.0f);
-	m4Position = glm::translate(v3Position) * glm::rotate(IDENTITY_M4, glm::radians(90.0f), vector3(1.0f, 0.0f, 0.0f)) * glm::rotate(IDENTITY_M4, glm::radians(90.0f), vector3(0.0f, 0.0f, 1.0f));
-	m_pEntityMngr->SetModelMatrix(m4Position);
-
-	/*
-	for (int i = 0; i < nSquare; i++)
-	{
-		for (int j = 0; j < nSquare; j++)
-		{
-			uIndex++;
-			m_pEntityMngr->AddEntity("Minecraft\\Cube.obj");
-			vector3 v3Position = vector3(glm::sphericalRand(34.0f));
-			matrix4 m4Position = glm::translate(v3Position);
-			m_pEntityMngr->SetModelMatrix(m4Position);
-		}
-	}*/
 	m_uOctantLevels = 1;
 	m_pRoot = new MyOctant(m_uOctantLevels, 5);
 	m_pEntityMngr->Update();
+}
+void Application::SetTargets(uint& index, MyEntityManager* entities)
+{
+	index++;
+	entities->AddEntity("Legend Of Lonk\\Green Rupee.fbx");
+	vector3 v3Position = vector3(0.0f, 0.0f, 85.0f);
+	matrix4 m4Position = glm::translate(v3Position) * glm::rotate(IDENTITY_M4, glm::radians(90.0f), vector3(1.0f, 0.0f, 0.0f)) * glm::rotate(IDENTITY_M4, glm::radians(90.0f), vector3(0.0f, 0.0f, 1.0f));
+	entities->SetModelMatrix(m4Position);
+
+	index++;
+	entities->AddEntity("Legend Of Lonk\\Blue Rupee.fbx");
+	v3Position = vector3(8.0f, 0.0f, 80.0f);
+	m4Position = glm::translate(v3Position) * glm::rotate(IDENTITY_M4, glm::radians(90.0f), vector3(1.0f, 0.0f, 0.0f)) * glm::rotate(IDENTITY_M4, glm::radians(90.0f), vector3(0.0f, 0.0f, 1.0f));
+	entities->SetModelMatrix(m4Position);
+
+	index++;
+	entities->AddEntity("Legend Of Lonk\\Blue Rupee.fbx");
+	v3Position = vector3(-8.0f, 0.0f, 80.0f);
+	m4Position = glm::translate(v3Position) * glm::rotate(IDENTITY_M4, glm::radians(90.0f), vector3(1.0f, 0.0f, 0.0f)) * glm::rotate(IDENTITY_M4, glm::radians(90.0f), vector3(0.0f, 0.0f, 1.0f));
+	entities->SetModelMatrix(m4Position);
+
+	index++;
+	entities->AddEntity("Legend Of Lonk\\Blue Rupee.fbx");
+	v3Position = vector3(2.0f, 5.0f, 80.0f);
+	m4Position = glm::translate(v3Position) * glm::rotate(IDENTITY_M4, glm::radians(90.0f), vector3(1.0f, 0.0f, 0.0f)) * glm::rotate(IDENTITY_M4, glm::radians(90.0f), vector3(0.0f, 0.0f, 1.0f));
+	entities->SetModelMatrix(m4Position);
+
+	index++;
+	entities->AddEntity("Legend Of Lonk\\Blue Rupee.fbx");
+	v3Position = vector3(-2.0f, 5.0f, 80.0f);
+	m4Position = glm::translate(v3Position) * glm::rotate(IDENTITY_M4, glm::radians(90.0f), vector3(1.0f, 0.0f, 0.0f)) * glm::rotate(IDENTITY_M4, glm::radians(90.0f), vector3(0.0f, 0.0f, 1.0f));
+	entities->SetModelMatrix(m4Position);
+
+	index++;
+	entities->AddEntity("Legend Of Lonk\\Red Rupee.fbx");
+	v3Position = vector3(8.0f, 8.0f, 70.0f);
+	m4Position = glm::translate(v3Position) * glm::rotate(IDENTITY_M4, glm::radians(90.0f), vector3(1.0f, 0.0f, 0.0f)) * glm::rotate(IDENTITY_M4, glm::radians(90.0f), vector3(0.0f, 0.0f, 1.0f));
+	entities->SetModelMatrix(m4Position);
+
+	index++;
+	entities->AddEntity("Legend Of Lonk\\Red Rupee.fbx");
+	v3Position = vector3(-8.0f, 8.0f, 70.0f);
+	m4Position = glm::translate(v3Position) * glm::rotate(IDENTITY_M4, glm::radians(90.0f), vector3(1.0f, 0.0f, 0.0f)) * glm::rotate(IDENTITY_M4, glm::radians(90.0f), vector3(0.0f, 0.0f, 1.0f));
+	entities->SetModelMatrix(m4Position);
+
+	index++;
+	entities->AddEntity("Legend Of Lonk\\Purple Rupee.fbx");
+	v3Position = vector3(0.0f, 16.0f, 60.0f);
+	m4Position = glm::translate(v3Position) * glm::rotate(IDENTITY_M4, glm::radians(90.0f), vector3(1.0f, 0.0f, 0.0f)) * glm::rotate(IDENTITY_M4, glm::radians(90.0f), vector3(0.0f, 0.0f, 1.0f));
+	entities->SetModelMatrix(m4Position);
 }
 void Application::Update(void)
 {
@@ -99,8 +89,22 @@ void Application::Update(void)
 	//Is the first person camera active?
 	CameraRotation();
 	
-	//Assign IDs to the dynamic entities
-	m_pRoot->AssignIDtoOutEntity();
+	//Assign IDs to the dynamic entities and static entities
+	if(octantActive)
+	{
+		m_pRoot->AssignIDtoOutEntity();
+		m_pRoot->AssignIDtoEntity();
+	}
+
+	//Defaults the entites to the 
+	if(!octantActive)
+	{
+		int sObjects = m_pEntityMngr->GetEntityCount();
+		int dObjects = MyDynamicEntityManager::GetInstance()->GetEntityCount();
+
+		m_pEntityMngr->ClearDimensionSetAll();
+		MyDynamicEntityManager::GetInstance()->ClearDimensionSetAll();
+	}
 
 	//Update Entity Manager
 	m_pEntityMngr->Update();
@@ -116,10 +120,16 @@ void Application::Display(void)
 	ClearScreen();
 
 	//display octree
-	if (m_uOctantID == -1)
-		m_pRoot->Display();
-	else
-		m_pRoot->Display(m_uOctantID);
+	if(octantDisplay)
+	{
+		if (m_uOctantID == -1)
+			m_pRoot->Display();
+		else
+			m_pRoot->Display(m_uOctantID);
+	}
+
+	if (!octantActive)
+		m_pRoot->Display(vector3(1.0f, 0.0f, 0.0f));
 
 	//render cursor on camera plane
 	matrix4 cameraPlane = m_pCameraMngr->GetCameraPlane();
