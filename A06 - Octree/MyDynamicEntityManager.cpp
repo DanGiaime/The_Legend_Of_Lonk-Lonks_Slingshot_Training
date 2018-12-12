@@ -187,8 +187,15 @@ void Simplex::MyDynamicEntityManager::Update(void)
 					RemoveEntity(i);
 					MyEntityManager::GetInstance()->RemoveEntity(j);
 					notCollided = false;
+					score += 100;
 					break;
 				}
+			}
+			if (m_mEntityArray[i]->GetRigidBody()->GetCenterGlobal().z < 50.0f)
+			{
+				RemoveEntity(i);
+				notCollided = false;
+				break;
 			}
 		}
 		if(notCollided)
@@ -430,4 +437,14 @@ bool Simplex::MyDynamicEntityManager::SharesDimension(String a_sUniqueID, MyEnti
 		return pTemp->SharesDimension(a_pOther);
 	}
 	return false;
+}
+
+uint Simplex::MyDynamicEntityManager::GetScore()
+{
+	return score;
+}
+
+void Simplex::MyDynamicEntityManager::SetScore(uint s)
+{
+	score = s;
 }

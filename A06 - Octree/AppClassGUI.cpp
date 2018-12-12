@@ -19,6 +19,10 @@ void Application::DrawGUI(void)
 	//m_pMeshMngr->Print("						");
 	m_pMeshMngr->Print("FPS:");
 	m_pMeshMngr->PrintLine(std::to_string(m_pSystem->GetFPS()), C_RED);
+
+	//m_pMeshMngr->Print("						");
+	m_pMeshMngr->Print("Score:");
+	m_pMeshMngr->PrintLine(std::to_string(MyDynamicEntityManager::GetInstance()->GetScore()), C_RED);
 #pragma endregion
 
 	//Calculate the window size to know how to draw
@@ -40,22 +44,27 @@ void Application::DrawGUI(void)
 				ImGui::GetIO().Framerate, 1000.0f / ImGui::GetIO().Framerate);
 			ImGui::Text("Levels in Octree: %d\n", m_uOctantLevels);
 			//ImGui::Text("Octants: %d\n", m_pRoot->GetOctantCount());
-			ImGui::Text("Objects: %d\n", m_uObjects);
+			ImGui::Text("Bullets: %d\n", MyDynamicEntityManager::GetInstance()->GetEntityCount());
 			ImGui::Separator();
 			ImGui::Text("Control:\n");
-			ImGui::Text("   WASD: Movement\n");
-			ImGui::Text("	 F1: Perspective\n");
-			ImGui::Text("	 F2: Orthographic X\n");
-			ImGui::Text("	 F3: Orthographic Y\n");
-			ImGui::Text("	 F4: Orthographic Z\n");
+			ImGui::Text("	WASD: Movement\n");
+			ImGui::Text("	Right Click: Aim\n");
+			ImGui::Text("	Spacebar: Shoot\n");
+			ImGui::Text("	G: Hold to Shoot (5 at a time)\n");
+			ImGui::Text("	R: Reset Level\n");
 			ImGui::Separator();
+			ImGui::Text("Position:\n");
+			ImGui::Text("	X: %f\n", m_pCameraMngr->GetPosition().x);
+			ImGui::Text("	Y: %f\n", m_pCameraMngr->GetPosition().y);
+			ImGui::Text("	Z: %f\n", m_pCameraMngr->GetPosition().z);
+			/*ImGui::Separator();
 			ImGui::Text(" PageUp: Increment Octant display\n");
 			ImGui::Text(" PageDw: Decrement Octant display\n");
 			ImGui::Separator();
 			ImGui::Text("	  -: Increment Octree subdivision\n");
 			ImGui::Text("	  +: Decrement Octree subdivision\n");
-			ImGui::Separator();
-			ImGui::TextColored(ImColor(255, 255, 0), "Octree\n");
+			ImGui::Separator();*/
+			ImGui::TextColored(ImColor(255, 255, 0), "Lonk's Slingshot Training\n");
 		}
 		ImGui::End();
 	}

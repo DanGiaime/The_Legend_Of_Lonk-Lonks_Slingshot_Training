@@ -29,7 +29,7 @@ class Application
 	Mesh* crosshair = nullptr;
 	Mesh* ground = nullptr;
 private:
-	String m_sProgrammer = "Alberto Bobadilla - labigm@rit.edu"; //programmer
+	String m_sProgrammer = "Nontendo"; //programmer
 
 	static ImGuiObject gui; //GUI object
 	bool m_bGUI_Main = true; //show Main GUI window?
@@ -67,6 +67,9 @@ private:
 	sf::Sound m_sound; //sound effect
 	sf::Music m_soundBGM; //background music
 
+	float cameraX = 0;
+	float cameraY = 0;
+	float cameraZ = 0;
 public:
 #pragma region Constructor / Run / Destructor
 	/*
@@ -336,6 +339,8 @@ private:
 	*/
 	Application& operator=(Application const& input);
 #pragma endregion
+
+	void Restart();
 };
 
 }//namespace Simplex
