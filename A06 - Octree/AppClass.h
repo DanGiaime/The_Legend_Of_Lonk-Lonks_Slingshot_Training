@@ -336,6 +336,8 @@ private:
 	*/
 	Application& operator=(Application const& input);
 #pragma endregion
+
+	void Restart();
 };
 
 }//namespace Simplex

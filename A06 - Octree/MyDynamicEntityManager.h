@@ -17,6 +17,7 @@ namespace Simplex
 		uint m_uEntityCount = 0; //number of elements in the list
 		PEntity* m_mEntityArray = nullptr; //array of MyDynamicEntity pointers
 		static MyDynamicEntityManager* m_pInstance; // Singleton pointer
+		uint score = 0;
 	public:
 		/*
 		Usage: Gets the singleton pointer
@@ -246,6 +247,8 @@ namespace Simplex
 		OUTPUT: MyEntity count
 		*/
 		uint GetEntityCount(void);
+		uint GetScore();
+		void SetScore(uint s);
 	private:
 		/*
 		Usage: constructor

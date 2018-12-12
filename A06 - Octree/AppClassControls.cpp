@@ -147,6 +147,9 @@ void Application::ProcessKeyReleased(sf::Event a_event)
 		MyDynamicEntityManager::GetInstance()->AddEntity(v3Velocity, v3Position, qRotation, "Legend Of Lonk\\Purple Rupee.fbx");
 	}
 		break;
+	case sf::Keyboard::R:
+		Restart();
+		break;
 	case sf::Keyboard::LShift:
 	case sf::Keyboard::RShift:
 		m_bModifier = false;

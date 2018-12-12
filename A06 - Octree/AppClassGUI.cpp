@@ -19,6 +19,10 @@ void Application::DrawGUI(void)
 	//m_pMeshMngr->Print("						");
 	m_pMeshMngr->Print("FPS:");
 	m_pMeshMngr->PrintLine(std::to_string(m_pSystem->GetFPS()), C_RED);
+
+	//m_pMeshMngr->Print("						");
+	m_pMeshMngr->Print("Score:");
+	m_pMeshMngr->PrintLine(std::to_string(MyDynamicEntityManager::GetInstance()->GetScore()), C_RED);
 #pragma endregion
 
 	//Calculate the window size to know how to draw
